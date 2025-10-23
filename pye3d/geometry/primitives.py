@@ -133,8 +133,8 @@ class Conic(Primitive):
             ellipse = args[0]
             ax = np.cos(ellipse.angle)
             ay = np.sin(ellipse.angle)
-            a2 = ellipse.major_radius ** 2
-            b2 = ellipse.minor_radius ** 2
+            a2 = ellipse.major_radius ** 2 + 1e-20
+            b2 = ellipse.minor_radius ** 2 + 1e-20  # small value to ensure no division by 0
 
             self.A = ax * ax / a2 + ay * ay / b2
             self.B = 2.0 * ax * ay / a2 - 2.0 * ax * ay / b2
